@@ -5,7 +5,9 @@ This is a custom checker script for _Push_swap_ project which students of [42 Pr
 
 ## Requirements
 Right now, Python script adapted only for School's IMacs and similar Macs with Mac OS Sierra or Catalina. 
+
 Script was not tested for Linux OS family.
+
 Script was not adapted for Windows.
 
 ## Covered cases

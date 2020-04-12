@@ -22,8 +22,8 @@ Script checks all base cases, excluding memory leaks and Norme:
 - Test of instructions execution: array sorted after execution
 - Test of instructions execution: array _not_ sorted after execution
 3. Test for no arguments for _checker_ binary
-4. Test of pipeline from push_swap ands checker
-- For arrays of 1-5 numbers
+4. Test of pipeline from push_swap and checker
+- For arrays of 1-5 numbers for all permutations
 - For arrays of 10-500 numbers
 
 ## TODO

@@ -19,8 +19,8 @@ Script checks all base cases, excluding memory leaks and Norme:
 2. Valid tests for _checker_ binary:
 - Array sorted
 - Array not sorted
-- Test of instructions execution: - array sorted after execution
-- Test of instructions execution: - array _not_ sorted after execution
+- Test of instructions execution: array sorted after execution
+- Test of instructions execution: array _not_ sorted after execution
 3. Test for no arguments for _checker_ binary
 4. Test of pipeline from push_swap ands checker
 - For arrays of 1-5 numbers

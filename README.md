@@ -15,11 +15,11 @@ Script was not adapted for Windows.
 All you need to do:
 1. Clone a script in root of your _push_swap_ project repo:
 
-	<git clone https://github.com/orsk-moscow/42_push_swap_checker.git >
+		git clone https://github.com/orsk-moscow/42_push_swap_checker.git
 
 2. Execute this command in root of your _push_swap_ project repo:
 
-	<python3 42_push_swap_checker/test_it.py >
+		python3 42_push_swap_checker/test_it.py
 
 3. Answer the questions by typing 'yes' or 'no':
 _Do you have any errors or bugs?_

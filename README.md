@@ -21,7 +21,8 @@ All you need to do:
 
 		python3 42_push_swap_checker/test_it.py
 
-3. Answer the questions by typing 'yes' or 'no':
+3. Answer this questions by typing 'yes' or 'no':
+
 _Do you have any errors or bugs?_
 
 ## Covered cases

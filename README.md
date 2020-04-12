@@ -45,4 +45,4 @@ Script checks all base cases, excluding memory leaks and Norme:
 More description coming soon.
 
 ## Feature requests
-If you have a feature request of find uncovered case, do not hesitate open an Issue
+If you have a feature request or you just found uncovered case, do not hesitate open an Issue

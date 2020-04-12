@@ -100,9 +100,9 @@ def feedback():
 
 # 2. Making necessary compilations
 cwd = os.getcwd()
-try:
-	os.system("cd libft && make re && make clean")
-finally:os.chdir(cwd)
+# try:
+# 	os.system("cd libft && make re && make clean")
+# finally:os.chdir(cwd)
 try:os.system("make re && make clean")
 finally:os.chdir(cwd)
 

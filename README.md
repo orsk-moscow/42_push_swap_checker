@@ -4,7 +4,7 @@
 This is a custom checker script for _Push_swap_ project which students of [42 Programming School](https://en.wikipedia.org/wiki/42_(school)) learn after _Print-f_ project on branch of algorithms. 
 
 ## Requirements
-Right now, Python script adapted only for School's IMacs and similar Macs with Mac OS Sierra or Catalina. 
+Right now, Python script adapted only for School's IMacs and similar Macs with OS Sierra or Catalina. 
 
 Script was not tested for Linux OS family.
 

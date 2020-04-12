@@ -241,8 +241,6 @@ for size in array_sizes:
 sum_ = i1+i2+i3
 print("Resume:\n%4i/%-4i tests passed\n%4i/%-4i tests failed\n%4i/%-4i tests finished unexpectedly"%(i1,sum_,i2,sum_,i3,sum_,))
 
-feedback()
-
 print("3.2 Test for PUSH_SWAP binary")
 i1 = 0
 i2 = 0

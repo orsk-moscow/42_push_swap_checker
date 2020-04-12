@@ -42,7 +42,10 @@ Script checks all base cases, excluding memory leaks and Norme:
 - For arrays of 10-500 numbers
 
 ## TODO
-More description coming soon.
+- More description coming soon.
+- Add _author_ file checking
+- Show feedback question only in case of failed tests
+- Add success message at the end of script
 
 ## Feature requests
 If you have a feature request or you just found uncovered case, do not hesitate open an Issue

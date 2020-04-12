@@ -100,9 +100,6 @@ def feedback():
 
 # 2. Making necessary compilations
 cwd = os.getcwd()
-# try:
-# 	os.system("cd libft && make re && make clean")
-# finally:os.chdir(cwd)
 try:os.system("make re && make clean")
 finally:os.chdir(cwd)
 
@@ -288,18 +285,12 @@ while cnt < 10:
         elif res == -2:i2+=1
         elif res == -10:i3+=1
     cnt += 1
-print("\nDo you have any bugs?\nType \'yes\' or \'no\':")
-orig_out = sys.stdout
-while True:
-    sys.stdout = io.StringIO()
-    inp = input()
-    sys.stdout = orig_out
-    if inp == 'yes' or inp == 'no':
-        break
-if inp == "yes":sys.exit()
 sum_ = i1+i2+i3
 print("Resume:\n%4i/%-4i tests passed\n%4i/%-4i tests failed\n%4i/%-4i tests finished unexpectedly"%(i1,sum_,i2,sum_,i3,sum_,))
 array_sizes = [2, 3, 4, 5, 100, 500]
+
+feedback()
+
 print("____________________________________________________")
 print("5. Valid tests for program Checker: array not sorted")
 i1 = 0

@@ -84,19 +84,33 @@ def make_test_push_swap(array, errors_test = False, silent = True, success = Fal
 
 
 def feedback():
-	print("\nDo you have any errors or bugs?\nType \'yes\' or \'no\':")
-	orig_out = sys.stdout
-	while True:
-		sys.stdout = io.StringIO()
-		inp = input()
-		sys.stdout = orig_out
-		if inp == 'yes' or inp == 'no':
-			break
-	if inp == "yes":
-		print("\nPlease, fix bugs/errors and welcome back\nGood luck!\n")
-		sys.exit()
-	return None
+    print("\nYou have errors or bugs. Continue tests?\nType \'yes\' or \'no\':")
+    orig_out = sys.stdout
+    while True:
+        sys.stdout = io.StringIO()
+        inp = input()
+        sys.stdout = orig_out
+        if inp == 'yes' or inp == 'no':
+            break
+    if inp == "yes":
+        print("\nPlease, fix bugs/errors and welcome back\nGood luck!\n")
+        sys.exit()
+    return None
 
+def silent():
+    print("\nDo you want to see debug output?\nType \'yes\' or \'no\':")
+    orig_out = sys.stdout
+    while True:
+        sys.stdout = io.StringIO()
+        inp = input()
+        sys.stdout = orig_out
+        if inp == 'yes' or inp == 'no':
+            break
+    if inp == "yes":
+        return False
+    return True
+
+silent = silent()
 
 # 2. Making necessary compilations
 cwd = os.getcwd()
@@ -116,7 +130,7 @@ for size in array_sizes:
     for arr in permutations(arange(size), size):
         arr = list(arr) + [arr[randint(0,len(arr))]]
         shuffle(arr)
-        res = make_test_checker(arr,"",errors_test = True, silent = True)
+        res = make_test_checker(arr,"",errors_test = True, silent = silent)
         if res == 1:i1+=1
         elif res == -1:i2+=1
         elif res == -2:i2+=1
@@ -124,7 +138,7 @@ for size in array_sizes:
     for arr in permutations(arange(1, size + 1), size):
         arr = list(arr) + [arr[randint(0,len(arr))]]
         shuffle(arr)
-        res = make_test_checker(arr,"",errors_test = True, silent = True)
+        res = make_test_checker(arr,"",errors_test = True, silent = silent)
         if res == 1:i1+=1
         elif res == -1:i2+=1
         elif res == -2:i2+=1
@@ -139,7 +153,7 @@ for size in array_sizes:
     for arr in permutations(arange(size), size):
         arr = list(arr) + [arr[randint(0,len(arr))]]
         shuffle(arr)
-        res = make_test_push_swap(arr,errors_test = True, silent = True)
+        res = make_test_push_swap(arr,errors_test = True, silent = silent)
         if res == 1:i1+=1
         elif res == -1:i2+=1
         elif res == -2:i2+=1
@@ -147,7 +161,7 @@ for size in array_sizes:
     for arr in permutations(arange(1, size + 1), size):
         arr = list(arr) + [arr[randint(0,len(arr))]]
         shuffle(arr)
-        res = make_test_push_swap(arr,errors_test = True, silent = True)
+        res = make_test_push_swap(arr,errors_test = True, silent = silent)
         if res == 1:i1+=1
         elif res == -1:i2+=1
         elif res == -2:i2+=1
@@ -155,7 +169,7 @@ for size in array_sizes:
 sum_ = i1+i2+i3
 print("Resume:\n%4i/%-4i tests passed\n%4i/%-4i tests failed\n%4i/%-4i tests finished unexpectedly"%(i1,sum_,i2,sum_,i3,sum_,))
 
-feedback()
+if (i2+i3):feedback()
 
 # 5. Test of non-numbers detection
 array_mistakes = ['a', 'one', '1-', 'tt', '@',  '1\\n', '\\n','\\n\\n\\n1']
@@ -170,7 +184,7 @@ for mistake in array_mistakes:
         for arr in permutations(arange(size), size):
             arr = list(arr) + [mistake]
             shuffle(arr)
-            res = make_test_checker(arr,"",errors_test = True, silent = True)
+            res = make_test_checker(arr,"",errors_test = True, silent = silent)
             if res == 1:i1+=1
             elif res == -1:i2+=1
             elif res == -2:i2+=1
@@ -178,7 +192,7 @@ for mistake in array_mistakes:
         for arr in permutations(arange(1, size + 1), size):
             arr = list(arr) + [mistake]
             shuffle(arr)
-            res = make_test_checker(arr,"",errors_test = True, silent = True)
+            res = make_test_checker(arr,"",errors_test = True, silent = silent)
             if res == 1:i1+=1
             elif res == -1:i2+=1
             elif res == -2:i2+=1
@@ -195,7 +209,7 @@ for mistake in array_mistakes:
         for arr in permutations(arange(size), size):
             arr = list(arr) + [mistake]
             shuffle(arr)
-            res = make_test_push_swap(arr,errors_test = True, silent = True)
+            res = make_test_push_swap(arr,errors_test = True, silent = silent)
             if res == 1:i1+=1
             elif res == -1:i2+=1
             elif res == -2:i2+=1
@@ -203,7 +217,7 @@ for mistake in array_mistakes:
         for arr in permutations(arange(1, size + 1), size):
             arr = list(arr) + [mistake]
             shuffle(arr)
-            res = make_test_push_swap(arr,errors_test = True, silent = True)
+            res = make_test_push_swap(arr,errors_test = True, silent = silent)
             if res == 1:i1+=1
             elif res == -1:i2+=1
             elif res == -2:i2+=1
@@ -211,7 +225,7 @@ for mistake in array_mistakes:
 sum_ = i1+i2+i3
 print("Resume:\n%4i/%-4i tests passed\n%4i/%-4i tests failed\n%4i/%-4i tests finished unexpectedly"%(i1,sum_,i2,sum_,i3,sum_,))
 
-feedback()
+if (i2+i3):feedback()
 
 # 6. Test of ints sizes detection
 array_sizes = [1, 2, 3, 4, 5, 100, 500]
@@ -224,7 +238,7 @@ i3 = 0
 for size in array_sizes:
     arr = [randint(2*INT_MIN, INT_MIN - 1)] + list(randint(INT_MIN, INT_MAX, size))
     shuffle(arr)
-    res = make_test_checker(arr,"",errors_test = True, silent = True)
+    res = make_test_checker(arr,"",errors_test = True, silent = silent)
     if res == 1:i1+=1
     elif res == -1:i2+=1
     elif res == -2:i2+=1
@@ -233,7 +247,7 @@ for size in array_sizes:
 for size in array_sizes:
     arr = [randint(INT_MAX + 1, 2*INT_MAX)] + list(randint(INT_MIN, INT_MAX, size))
     shuffle(arr)
-    res = make_test_checker(arr,"",errors_test = True, silent = True)
+    res = make_test_checker(arr,"",errors_test = True, silent = silent)
     if res == 1:i1+=1
     elif res == -1:i2+=1
     elif res == -2:i2+=1
@@ -248,7 +262,7 @@ i3 = 0
 for size in array_sizes:
     arr = [randint(2*INT_MIN, INT_MIN - 1)] + list(randint(INT_MIN, INT_MAX, size))
     shuffle(arr)
-    res = make_test_push_swap(arr,errors_test = True, silent = True)
+    res = make_test_push_swap(arr,errors_test = True, silent = silent)
     if res == 1:i1+=1
     elif res == -1:i2+=1
     elif res == -2:i2+=1
@@ -256,7 +270,7 @@ for size in array_sizes:
 for size in array_sizes:
     arr = [randint(INT_MAX + 1, 2*INT_MAX)] + list(randint(INT_MIN, INT_MAX, size))
     shuffle(arr)
-    res = make_test_push_swap(arr,errors_test = True, silent = True)
+    res = make_test_push_swap(arr,errors_test = True, silent = silent)
     if res == 1:i1+=1
     elif res == -1:i2+=1
     elif res == -2:i2+=1
@@ -264,7 +278,7 @@ for size in array_sizes:
 sum_ = i1+i2+i3
 print("Resume:\n%4i/%-4i tests passed\n%4i/%-4i tests failed\n%4i/%-4i tests finished unexpectedly"%(i1,sum_,i2,sum_,i3,sum_,))
 
-feedback()
+if (i2+i3):feedback()
 
 # 7. Test of random numbers
 print("________________________________________________")
@@ -277,7 +291,7 @@ while cnt < 10:
     for size in array_sizes:
         arr = list(randint(INT_MIN, INT_MAX + 1, size))
         arr.sort()
-        res = make_test_checker(arr,"",errors_test = False, silent = True)
+        res = make_test_checker(arr,"",errors_test = False, silent = silent)
         if res == 2:i1+=1
         elif res == 1:i2+=1
         elif res == -2:i2+=1
@@ -287,7 +301,7 @@ sum_ = i1+i2+i3
 print("Resume:\n%4i/%-4i tests passed\n%4i/%-4i tests failed\n%4i/%-4i tests finished unexpectedly"%(i1,sum_,i2,sum_,i3,sum_,))
 array_sizes = [2, 3, 4, 5, 100, 500]
 
-feedback()
+if (i2+i3):feedback()
 
 print("____________________________________________________")
 print("5. Valid tests for program Checker: array not sorted")
@@ -299,7 +313,7 @@ while cnt < 10:
     for size in array_sizes:
         arr = list(randint(INT_MIN, INT_MAX + 1, size))
         arr.sort(reverse=True)
-        res = make_test_checker(arr,"",errors_test = False, silent = True, success=True)
+        res = make_test_checker(arr,"",errors_test = False, silent = silent, success=True)
         if res == 1:i1+=1
         elif res == 2:
             i2+=1
@@ -310,11 +324,13 @@ while cnt < 10:
 sum_ = i1+i2+i3
 print("Resume:\n%4i/%-4i tests passed\n%4i/%-4i tests failed\n%4i/%-4i tests finished unexpectedly"%(i1,sum_,i2,sum_,i3,sum_,))
 
-feedback()
+if (i2+i3):feedback()
 
 # 8. Test of instructions (for checker binary)
 pairs = [
         [[21, 0, 564, 666, 8239], 'sa\n'],
+        [[0, 1, 2], ''],
+        [[0, 9, 1, 8 , 2], 'pb\nra\npb\nra\nsa\nra\npa\npa\n'],
         [[21, 0, 564, 666, 8239], 'pb\npb\nsb\npa\npa\n'],
         [[21, 0, 666, 564, 8239], 'pb\npb\nss\npa\npa\n'],
         [[8239, 0, 21, 564, 666], 'ra\n'],
@@ -332,7 +348,7 @@ i2 = 0
 i3 = 0
 for array, command in pairs:
     command = bytes(command,encoding = 'ascii')
-    res = make_test_checker(array, command, errors_test = False, silent = False, success=False)
+    res = make_test_checker(array, command, errors_test = False, silent = silent, success=False)
     if res == 2:i1+=1
     elif res == 1:i2+=1
     elif res == -1:i2+=1
@@ -340,7 +356,7 @@ for array, command in pairs:
 sum_ = i1+i2+i3
 print("Resume:\n%4i/%-4i tests passed\n%4i/%-4i tests failed\n%4i/%-4i tests finished unexpectedly"%(i1,sum_,i2,sum_,i3,sum_,))
 
-feedback()
+if (i2+i3):feedback()
 
 pairs = [
         [[21, 0, 564, 666, 8239], 'sa\npb\n'],
@@ -361,7 +377,7 @@ i2 = 0
 i3 = 0
 for array, command in pairs:
     command = bytes(command,encoding = 'ascii')
-    res = make_test_checker(array, command, errors_test = False, silent = True, success=False)
+    res = make_test_checker(array, command, errors_test = False, silent = silent, success=False)
     if res == 1:i1+=1
     elif res == 2:i2+=1
     elif res == -1:i2+=1
@@ -369,7 +385,7 @@ for array, command in pairs:
 sum_ = i1+i2+i3
 print("Resume:\n%4i/%-4i tests passed\n%4i/%-4i tests failed\n%4i/%-4i tests finished unexpectedly"%(i1,sum_,i2,sum_,i3,sum_,))
 
-feedback()
+if (i2+i3):feedback()
 
 # 9. Test with no args
 array_nothing = []
@@ -393,7 +409,7 @@ i2 = 0
 i3 = 0
 for command in instructions:
     command = bytes(command,encoding = 'ascii')
-    res = make_test_checker(array_nothing, command, errors_test = False, silent = True, success=False)
+    res = make_test_checker(array_nothing, command, errors_test = False, silent = silent, success=False)
     if res == 1:i2+=1
     elif res == 2:i2+=1
     elif res == -2:i2+=1
@@ -402,7 +418,7 @@ for command in instructions:
 sum_ = i1+i2+i3
 print("Resume:\n%4i/%-4i tests passed\n%4i/%-4i tests failed\n%4i/%-4i tests finished unexpectedly"%(i1,sum_,i2,sum_,i3,sum_,))
 
-feedback()
+if (i2+i3):feedback()
 
 # 10. Test of pipeline from push_swap ands checker for array of 1-5 numbers
 array_sizes = range(1,6)
@@ -416,14 +432,17 @@ for size in array_sizes:
     cnt = 0
     sum_instructions = 0
     for arr in permutations(arange(size), size):
-        instructions = make_test_push_swap(arr,errors_test = False, silent = True)
+        instructions = make_test_push_swap(arr,errors_test = False, silent = silent)
         if instructions == -1:i3+=1
         else:
             cnt+=1
-            res = make_test_checker(arr,instructions, silent = False)
+            res = make_test_checker(arr,instructions, silent = silent)
             if res == 2:i1+=1
             else:i2+=1
-            sum_instructions+=len(bytes.decode(instructions).split('\n')[:-1])
+            num_instructions = len(bytes.decode(instructions).split('\n')[:-1])
+            sum_instructions+=num_instructions
+            if size == 3 and num_instructions > 3:print("WARNING: more than 3 instructios for array size 3.\nWARNING: Array: ",arr,"\nWARNING: Instructions: ",instructions)
+            if size == 5 and num_instructions > 12:print("WARNING: more than 12 instructios for array size 5.\nWARNING: Array: ",arr,"\nWARNING: Instructions: ",instructions)
     list_amounts.append(sum_instructions//cnt)
 
 sum_ = i1+i2+i3
@@ -431,7 +450,7 @@ print("Resume:\n%4i/%-4i tests passed\n%4i/%-4i tests failed\n%4i/%-4i tests fin
 for size, amount in zip(array_sizes, list_amounts):
     print("\nAverage amount of instructions for array size %4i:%-5i"%(size,amount))
 
-feedback()
+if (i2+i3):feedback()
 
 # 11. Test of pipeline from push_swap and checker for array of 10-500 numbers
 array_sizes = [10,20,30,40,50,75,100,200,300,400,500]
@@ -448,11 +467,11 @@ for i, size in enumerate(array_sizes):
     while cnt2 < 50:
         arr = choice(arange(-size, size), size,replace = False)
         shuffle(arr)
-        instructions = make_test_push_swap(arr,errors_test = False, silent = True)
+        instructions = make_test_push_swap(arr,errors_test = False, silent = silent)
         if instructions == -1:i3+=1
         else:
             cnt+=1
-            res = make_test_checker(arr,instructions, silent = False)
+            res = make_test_checker(arr,instructions, silent = silent)
             if res == 2:i1+=1
             else:i2+=1
             sum_instructions+=len(bytes.decode(instructions).split('\n')[:-1])

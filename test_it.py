@@ -313,7 +313,7 @@ while cnt < 10:
     for size in array_sizes:
         arr = list(randint(INT_MIN, INT_MAX + 1, size))
         arr.sort(reverse=True)
-        res = make_test_checker(arr,"",errors_test = False, silent = silent, success=True)
+        res = make_test_checker(arr,"",errors_test = False, silent = True, success=True)
         if res == 1:i1+=1
         elif res == 2:
             i2+=1
@@ -340,7 +340,7 @@ pairs = [
         [[8239, 0, 21, 564, 666], 'pb\npb\npb\npb\npb\nrrb\npa\npa\npa\npa\npa\n'],
         [[8239, 0, 21, 564, 666, 89363250, 98363250, 8956325], 'pb\npb\npb\npb\npb\nrrr\npa\npa\npa\npa\npa\n'],
         ]
-print("________________________________________________")
+print("_____________________________________________________")
 print("6. Test of instructions exections (for checker binary)")
 print("All instructions correct")
 i1 = 0
@@ -369,7 +369,7 @@ pairs = [
         [[8239, 0, 21, 564, 666], 'pb\npb\npb\npb\npb\nrrb\npa\npa\npa\npa\npa\npb\n'],
         [[8239, 0, 21, 564, 666, 89363250, 98363250, 8956325], 'pb\npb\npb\npb\npb\nrrr\npa\npa\npa\npa\n'],
         ]
-print("________________________________________________")
+print("______________________________________________________")
 print("7. Test of instructions executions (for checker binary)")
 print("All instructions NOT correct")
 i1 = 0
@@ -377,7 +377,7 @@ i2 = 0
 i3 = 0
 for array, command in pairs:
     command = bytes(command,encoding = 'ascii')
-    res = make_test_checker(array, command, errors_test = False, silent = silent, success=False)
+    res = make_test_checker(array, command, errors_test = False, silent = True, success=False)
     if res == 1:i1+=1
     elif res == 2:i2+=1
     elif res == -1:i2+=1
@@ -402,14 +402,14 @@ instructions = [
                 'pa\n',
                 'pb\n',
                 ]
-print("________________________________________________")
+print("________________________________________")
 print("8. Test for no argv (for checker binary)")
 i1 = 0
 i2 = 0
 i3 = 0
 for command in instructions:
     command = bytes(command,encoding = 'ascii')
-    res = make_test_checker(array_nothing, command, errors_test = False, silent = silent, success=False)
+    res = make_test_checker(array_nothing, command, errors_test = False, silent = True, success=False)
     if res == 1:i2+=1
     elif res == 2:i2+=1
     elif res == -2:i2+=1
@@ -422,7 +422,7 @@ if (i2+i3):feedback()
 
 # 10. Test of pipeline from push_swap ands checker for array of 1-5 numbers
 array_sizes = range(1,6)
-print("__________________________________________")
+print("________________________________________________________________________")
 print("9. Test of pipeline from push_swap ands checker for array of 1-5 numbers")
 i1 = 0
 i2 = 0
@@ -455,7 +455,7 @@ if (i2+i3):feedback()
 # 11. Test of pipeline from push_swap and checker for array of 10-500 numbers
 array_sizes = [10,20,30,40,50,75,100,200,300,400,500]
 print("____________________________________________________________________________")
-print("10. Test of pipeline from push_swap ands checker for array of 10-500 numbers\n")
+print("10. Test of pipeline from push_swap ands checker for array of 10-500 numbers")
 i1 = 0
 i2 = 0
 i3 = 0

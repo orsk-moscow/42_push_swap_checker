@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Unknown</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+  <h1 class="title">FOSS Project Spotlight: Run Remote Tasks on Linux and Windows with Puppet Bolt</h1>
+
+  <div class="caption">
+    <img alt="Puppet Bolt" src="../Images/12509c.jpg" class="calibre5"/>
+
+    <p class="caption1"></p>
+  </div>
+
+  <p class="calibre12">Puppet, the company that makes automation software for managing systems and delivering software, has introduced Puppet Bolt, an open-source, agentless multiplatform tool for running commands, scripts, tasks and orchestrated workflows on remote Linux and Windows systems.</p>
+
+  <p class="calibre12">The tool, which is freely available as a Linux package, Ruby gem and macOS or Windows installer, is ideal for sysadmins and others who want to perform a wide range of automation tasks on remote bare-metal servers, VMs or cloud instances without the need for any prerequisites. Puppet Bolt doesn't require any previous Puppet know-how. Nor does it require a Puppet agent or Puppet master. It uses only SSH and WinRM (or can piggyback Puppet transports) to communicate and execute tasks on remote nodes.</p>
+
+  <p class="calibre12">Despite its simplicity, Puppet Bolt can execute all your existing scripts written in Bash, PowerShell, Python or any other language, stop and start Linux or Windows services, gather information about packages and system facts, or deploy procedural orchestrated workflows, otherwise known as plans. You can do all this right from your workstation or laptop.</p>
+
+  <p class="calibre12">For those already using open-source Puppet or Puppet Enterprise, Puppet Bolt enables you to take advantage of the more than 5,700 modules available in the Puppet Forge for everything from deploying database servers to setting up Docker or Kubernetes. You also can query PuppetDB directly with Puppet Bolt.</p>
+
+  <h3 class="sigil_not_in_toc1">Install Puppet Bolt and Run Some Tasks</h3>
+
+  <p class="calibre12">You also can install Puppet Bolt with <code class="calibre16">apt</code> or <code class="calibre16">yum</code> once you add the Puppet repositories:</p>
+  <pre class="calibre17"><code class="calibre16">
+$ sudo apt install puppet-bolt
+</code>
+</pre>
+
+  <p class="calibre12">You can install Puppet Bolt on Windows with the available .msi, or if you're running Bash on Windows 10, by using the Linux instructions for the flavor you installed. Follow the link in the Resources section to see detailed installation instructions for your favorite platform.</p>
+
+  <p class="calibre12">If you're running Ruby (and have <code class="calibre16">gcc</code> and <code class="calibre16">make</code> on your workstation), you can get Puppet Bolt up and running in moments with the simple command:</p>
+  <pre class="calibre17"><code class="calibre16">
+$ gem install bolt
+</code>
+</pre>
+
+  <p class="calibre12">In just a few minutes, you're now ready to start running one-off commands, tasks, scripts or plans. Puppet Bolt is perfect for troubleshooting or deploying quick changes, distributing scripts to run across your infrastructure, or automating changes that need to happen in a particular order as part of an application deployment. See the built-in Puppet Bolt commands by running:</p>
+  <pre class="calibre17"><code class="calibre16">
+$ bolt help
+</code>
+</pre>
+
+  <div class="caption">
+    <img alt="Ad Choices Symbol" src="../Images/12509f1.jpg" class="calibre5"/>
+
+    <p class="caption1"><em class="calibre6">Figure 1. Built-in Puppet Bolt Commands</em></p>
+  </div>
+
+  <p class="calibre12">A typical Puppet Bolt command looks like this:</p>
+  <pre class="calibre17"><code class="calibre16">
+$ bolt &lt;SUBCOMMAND&gt; &lt;ACTION&gt; [options] --nodes &lt;NODE&gt; 
+</code>
+</pre>
+
+  <p class="calibre12">Where <code class="calibre16">&lt;SUBCOMMAND&gt;</code> can be a command, file, script, task or plan. Target nodes can be listed after the <code class="calibre16">--nodes</code> (or <code class="calibre16">-n</code>) flag or listed in a plain-text file. For example, check the uptime on all your nodes at once like this:</p>
+  <pre class="calibre17"><code class="calibre16">
+$ bolt command run uptime -n server01,server02,server03...
+</code>
+</pre>
+
+  <p class="calibre12">Or:</p>
+  <pre class="calibre17"><code class="calibre16">
+$ bolt command run uptime -n @mynodes.txt
+</code>
+</pre>
+
+  <p class="calibre12">When executing on WinRM nodes, indicate the WinRM protocol in the nodes string:</p>
+  <pre class="calibre17"><code class="calibre16">
+$ bolt command run &lt;COMMAND&gt; --nodes winrm://&lt;WINDOWS.NODE&gt; 
+ ↪--user &lt;USERNAME&gt; --password &lt;PASSWORD&gt;
+</code>
+</pre>
+
+  <p class="calibre12">Running your existing tried and true scripts (written in any language) on remote nodes is just as simple:</p>
+  <pre class="calibre17"><code class="calibre16">
+$ bolt script run mypythonfile.py -n @mynodes.txt
+</code>
+</pre>
+
+  <p class="calibre12">Puppet Bolt really shines when it comes to tasks and plans that rely on more formal orchestration capabilities. You can view built-in Bolt tasks by executing <code class="calibre16">$ bolt task show</code> (Figure 2).</p>
+
+  <div class="caption">
+    <img alt="Ad Choices Symbol" src="../Images/12509f2.jpg" class="calibre5"/>
+
+    <p class="caption1"><em class="calibre6">Figure 2. Built-in Bolt Tasks</em></p>
+  </div>
+
+  <p class="calibre12">For example, if you want to stop, start or restart services on a Linux or Windows node, you could execute the following task:</p>
+  <pre class="calibre17"><code class="calibre16">
+$ bolt task run service::linux name=cron action=restart -n 
+ ↪linuxnode01 
+</code>
+</pre>
+
+  <p class="calibre12">Or:</p>
+  <pre class="calibre17"><code class="calibre16">
+$ bolt task run service::windows name=Netman action=restart 
+ ↪-n @windowsnodes.txt 
+</code>
+</pre>
+
+  <p class="calibre12">You also can use the <code class="calibre16">task</code> command to look at the status and version of a particular package or app on one or thousands of nodes:</p>
+  <pre class="calibre17"><code class="calibre16">
+$ bolt task run package name=cron action=status -n linuxnode01
+Started on linuxnode01...
+Finished on linuxnode01:
+  {
+   "status": "up to date",
+   "version": "3.0pl1-128ubuntu2"
+  }
+Successful on 1 node: linuxnode01
+Ran on 1 node in 2.10 seconds
+</code>
+</pre>
+
+  <p class="calibre12">Similarly, you can view built-in plans with the <code class="calibre16">$ bolt plan show</code> statement (Figure 3).</p>
+
+  <div class="caption">
+    <img alt="Built-in Bolt Plans" src="../Images/12509f3.jpg" class="calibre5"/>
+
+    <p class="caption1"><em class="calibre6">Figure 3. Built-in Bolt Plans</em></p>
+  </div>
+
+  <p class="calibre12">You can run these plans without any Puppet agent (or master), but if you want to take advantage of Puppet modules you've written or downloaded from the Forge, such as one to set up nodejs and connect it to your load balancer, you might do this by combining Puppet Bolt with a target node that already has the Puppet agent installed:</p>
+  <pre class="calibre17"><code class="calibre16">
+$ bolt plan run nodejs::myplan load_balancer=lb.myorg.com 
+</code>
+</pre>
+
+  <p class="calibre12">Not all modules require the Puppet agent. For example, Puppet Bolt can run the <a href="https://forge.puppet.com/puppetlabs/aws" class="calibre2"><code class="calibre16">puppetlabs/aws</code></a> module without it.</p>
+
+  <h3 class="sigil_not_in_toc1">Puppet Bolt Is a Great On-Ramp to Puppet</h3>
+
+  <p class="calibre12">Puppet Bolt is lightweight and easy to learn, with new features added regularly by Puppet's development team, making it an ideal replacement for Ansible, Rundeck, Bladelogic and even Bash and PowerShell scripts. Unlike tools with limited scope, Puppet Bolt treats every target node as a first-class citizen and lets you do everything from quick fixes to full app deployments.</p>
+
+  <p class="calibre12">At the same time, working with Puppet Bolt is a great way to introduce yourself to model-based automation, which Puppet pioneered and has become the de facto standard for organizations determined to reap the benefits of pervasive automation. You can use everything you learn with Puppet Bolt elsewhere in the Puppet universe, which means you and your DevOps teammates finally can share a common tool and expertise—without any prerequisites.</p>
+
+  <h3 class="sigil_not_in_toc1">Resources</h3>
+
+  <ul class="calibre18">
+    <li class="calibre4"><a href="https://github.com/puppetlabs/tasks-hands-on-lab" class="calibre2">Hands-on Lab</a></li>
+
+    <li class="calibre4"><a href="https://puppet.com/docs/bolt/0.x/bolt.html" class="calibre2">Puppet Bolt Documentation</a></li>
+
+    <li class="calibre4"><a href="https://puppet.com/products/puppet-bolt" class="calibre2">Puppet Bolt Information Page</a></li>
+  </ul>
+
+  <h3 class="sigil_not_in_toc1">About the Author</h3>
+
+  <div class="authorblurb">
+    <p class="calibre12">John Tonello is Sr. Technical Marketing Manager for Puppet Inc. He's been a Linux user and enthusiast since building his first Slackware system from diskette 20 years ago.</p>
+  </div>
+</body>
+</html>

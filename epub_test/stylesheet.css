@@ -1,0 +1,415 @@
+.advisory {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 0.58333em;
+    font-weight: bold;
+    margin: 0.83em 0
+    }
+.advisory1 {
+    display: block;
+    font-size: 0.58333em;
+    list-style-type: disc;
+    margin-bottom: 1em;
+    margin-right: 0;
+    margin-top: 1em
+    }
+.authorblurb {
+    display: block;
+    font-size: 0.75em;
+    border-top: #000 solid 1px
+    }
+.basic-graphics-frame {
+    height: auto;
+    line-height: 1.2;
+    width: 100%
+    }
+.basic-paragraph {
+    color: #000;
+    display: block;
+    font-family: Times, serif;
+    font-size: 1em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1.2;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0;
+    margin: 0 0 18px
+    }
+.basic-paragraph1 {
+    color: #000;
+    display: block;
+    font-family: Times, serif;
+    font-size: 1em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1.2;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0;
+    margin: 0
+    }
+.basic-paragraph2 {
+    color: #000;
+    display: block;
+    font-family: Times, serif;
+    font-size: 1em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1.2;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0;
+    margin: 0 0 14px
+    }
+.basic-paragraph3 {
+    color: #000;
+    display: block;
+    font-family: Times, serif;
+    font-size: 1em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1.2;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0;
+    margin: 0 0 36px
+    }
+.calibre {
+    display: block;
+    font-size: 1em;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 5pt
+    }
+.calibre1 {
+    display: block
+    }
+.calibre2 {
+    color: #bc5500
+    }
+.calibre3 {
+    font-weight: bold
+    }
+.calibre4 {
+    display: list-item
+    }
+.calibre5 {
+    height: auto;
+    width: auto
+    }
+.calibre6 {
+    font-style: italic
+    }
+.calibre7 {
+    font-style: italic;
+    line-height: 1.2
+    }
+.calibre8 {
+    font-weight: bold;
+    line-height: 1.2
+    }
+.calibre9 {
+    color: #bc5500;
+    line-height: 1.2
+    }
+.calibre10 {
+    font-size: 1.25926em;
+    font-style: italic;
+    line-height: 1.2
+    }
+.calibre11 {
+    display: block;
+    line-height: 1.2
+    }
+.calibre12 {
+    display: block;
+    margin: 1em 0
+    }
+.calibre13 {
+    display: block;
+    margin: 1em
+    }
+.calibre14 {
+    display: block;
+    list-style-type: decimal;
+    margin-bottom: 1em;
+    margin-right: 0;
+    margin-top: 1em
+    }
+.calibre15 {
+    height: auto;
+    width: 150px
+    }
+.calibre16 {
+    color: #10486D;
+    font-family: "DejaVuSansMono", serif
+    }
+.calibre17 {
+    color: #10486D;
+    display: block;
+    font-family: "DejaVuSansMono", serif;
+    font-size: 0.75em;
+    white-space: pre-wrap;
+    margin: 1em 0
+    }
+.calibre18 {
+    display: block;
+    list-style-type: disc;
+    margin-bottom: 1em;
+    margin-right: 0;
+    margin-top: 1em
+    }
+.calibre19 {
+    font-size: 1em;
+    font-style: italic
+    }
+.calibre20 {
+    font-size: 1em
+    }
+.calibre21 {
+    height: auto;
+    width: 100%
+    }
+.calibre22 {
+    display: block
+    }
+.calibre23 {
+    border-collapse: separate;
+    border-spacing: 2px;
+    display: table;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-indent: 0
+    }
+.calibre24 {
+    display: table-header-group;
+    vertical-align: middle;
+    border: inherit inherit inherit
+    }
+.calibre25 {
+    display: table-row;
+    vertical-align: inherit;
+    border: inherit inherit inherit
+    }
+.calibre26 {
+    display: table-cell;
+    text-align: inherit;
+    vertical-align: inherit;
+    border: #ccc solid 1px;
+    padding: 4px
+    }
+.calibre27 {
+    display: table-row-group;
+    vertical-align: middle;
+    border: inherit inherit inherit
+    }
+.caption {
+    display: block;
+    border-top: #000 dotted 1px;
+    border-bottom: #000 dotted 1px;
+    padding: 1.5em 0 0
+    }
+.caption1 {
+    display: block;
+    font-size: 0.75em;
+    font-weight: bold;
+    margin: 1em 0
+    }
+.char-style-override {
+    font-family: "Liberation Sans", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1.2
+    }
+.char-style-override1 {
+    font-family: "Liberation Sans";
+    font-size: 0.75em;
+    font-style: normal;
+    font-weight: normal
+    }
+.char-style-override2 {
+    font-family: "DejaVu Sans", sans-serif;
+    font-size: 0.58333em;
+    font-style: normal;
+    font-weight: bold
+    }
+.char-style-override3 {
+    font-family: "DejaVu Sans", sans-serif;
+    font-size: 0.58333em;
+    font-style: normal;
+    font-weight: normal
+    }
+.char-style-override4 {
+    font-family: "DejaVu Sans", sans-serif;
+    font-size: 0.58333em;
+    font-style: italic;
+    font-weight: bold
+    }
+.char-style-override5 {
+    color: #990208;
+    font-size: 1.5em;
+    line-height: 1.2;
+    text-transform: uppercase
+    }
+.char-style-override6 {
+    font-family: "DejaVu Sans", sans-serif;
+    font-size: 0.77778em;
+    font-style: normal;
+    font-weight: bold
+    }
+.char-style-override7 {
+    font-family: "DejaVu Sans", sans-serif;
+    font-size: 0.77778em;
+    font-style: italic;
+    font-weight: normal
+    }
+.char-style-override8 {
+    font-family: "DejaVu Sans 65 Bold";
+    font-size: 0.77778em;
+    font-style: normal;
+    font-weight: normal
+    }
+.char-style-override9 {
+    font-family: "Liberation Sans", sans-serif;
+    font-size: 0.41667em;
+    font-style: italic;
+    font-weight: normal
+    }
+.char-style-override10 {
+    font-family: "Liberation Sans";
+    font-size: 0.41667em;
+    font-style: normal;
+    font-weight: normal
+    }
+.image {
+    height: auto;
+    width: 39%
+    }
+.newproductsheader {
+    color: #d94c00;
+    display: block;
+    font-family: "Frutiger 65 Bold", sans-serif;
+    font-size: 1.83333em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    margin: 0 0 36px
+    }
+.normal {
+    color: #000;
+    display: block;
+    font-family: "Frutiger 65 Bold", sans-serif;
+    font-size: 0.75em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0;
+    margin: 0 0 9px
+    }
+.normal1 {
+    color: #000;
+    display: block;
+    font-family: "Frutiger 65 Bold", sans-serif;
+    font-size: 0.75em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0;
+    margin: 0 0 36px
+    }
+.sectionhead {
+    color: #000;
+    display: block;
+    font-family: "DejaVu Sans Condensed", sans-serif;
+    font-size: 1.41667em;
+    font-stretch: semi-condensed;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    text-transform: uppercase;
+    margin: 0 0 18px
+    }
+.sigil_not_in_toc {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 1.125em;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 0.83em 0
+    }
+.sigil_not_in_toc1 {
+    display: block;
+    font-size: 1.125em;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 1em 0
+    }
+.subhd {
+    color: #09f;
+    display: block;
+    font-family: "Liberation Sans", sans-serif;
+    font-size: 0.75em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0;
+    margin: 14px 0 9px
+    }
+.title {
+    color: #000;
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 1.66667em;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 0.67em 0
+    }
+.tocabs {
+    display: block;
+    font-style: italic
+    }
+.tocauthor {
+    display: block;
+    font-weight: bold;
+    margin-left: 2em
+    }
+.tocitem {
+    display: block;
+    margin-bottom: 2em
+    }
+.toctitle {
+    display: block;
+    font-size: 1.125em;
+    font-weight: bold;
+    line-height: 1.2
+    }
+.toctitle1 {
+    color: #000;
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 1.125em;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 0.67em 0
+    }

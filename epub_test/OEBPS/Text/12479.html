@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Unknown</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+  <h1 class="title">Tech Tips: Easy SSH Automation</h1>
+
+  <p class="calibre12">A script a day will allow you some freedom to play and build other useful and more complicated scripts. Every day, I attempt to make my life easier—by this I mean, trying to stop doing the repetitive tasks. If a process is repeatable; it can be scripted and automated. The idea to automate everything is not new, but try automating a command on a remote host.</p>
+
+  <p class="calibre12">SSH is very flexible, and it comes with many options. My absolute favorite is its ability to let you run a command on a remote server by passing the <code class="calibre16">-t</code> flag. An example:</p>
+  <pre class="calibre17"><code class="calibre16">
+ssh -t adam@webserver1.test.com 'cat /etc/hosts'
+</code>
+</pre>
+
+  <p class="calibre12">This will <code class="calibre16">ssh</code> to webserver1.test.com, then run <code class="calibre16">cat /etc/hosts</code> in your shell and return the output.</p>
+
+  <p class="calibre12">For efficiency, you could create an SSH key pair. It's a simple process to create a passwordless public and a private key pair. To set this up, use <code class="calibre16">ssh-keygen</code>, and accept the defaults ensuring you leave the password blank:</p>
+  <pre class="calibre17"><code class="calibre16">
+ssh-keygen 
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/adam/.ssh/id_rsa): y
+Enter passphrase (empty for no passphrase): LEAVE BLANK
+Enter same passphrase again: 
+Your identification has been saved in y.
+Your public key has been saved in y.pub.
+The key fingerprint is:
+SHA256:jUxrQRObADE8ardXMT9UaoAcOcQPBEKGU622646P8ho 
+ ↪adam@webserver1.test.com
+The key's randomart image is:
++---[RSA 2048]----+
+|B*++*Bo.=o       |
+|.+.              |
+|=*=              |
++----[SHA256]-----+
+</code>
+</pre>
+
+  <p class="calibre12">Once completed, copy the public key to the target server. To do this, use <code class="calibre16">ssh-copy-id</code>:</p>
+  <pre class="calibre17"><code class="calibre16">
+ssh-copy-id adam@webserver1.test.com
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed:
+"/home/adam/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), 
+ ↪to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if 
+ ↪you are prompted now it is to install the new keys
+adam@webserver1.test.com's password: ******** 
+Number of key(s) added:        1
+</code>
+</pre>
+
+  <p class="calibre12">You will be asked for the password of the target server.</p>
+
+  <p class="calibre12">If you have set this up correctly, you won't be asked for your password next time you <code class="calibre16">ssh</code> to your target.</p>
+
+  <p class="calibre12">Execute the original example. It should be quicker now that you don't need to enter your password.</p>
+
+  <p class="calibre12">If you have a handful of servers and want to report the running kernel versions, you can run <code class="calibre16">uname -r</code> from the command line, but to do this on multiple devices, you'll need a script.</p>
+
+  <p class="calibre12">Start with a file with a list of your servers, called server.txt, and then run your script to iterate over each server and return the required information:</p>
+  <pre class="calibre17"><code class="calibre16"> 
+#!/bin/bash
+if [ -f server.txt ]; then
+        for server in $(cat server.txt); do
+                ssh -t adam@$server  '
+                echo $(uname -r)                '
+        done
+else
+        echo 'No server.txt file'
+fi
+</code>
+</pre>
+
+  <p class="calibre12">The <code class="calibre16">if</code> statement is checking to ensure that there's a file called server.txt. The <code class="calibre16">for</code> loop creates the variable called <code class="calibre16">server</code> for each target in server.txt, it then connects and fetches the kernel information.</p>
+
+  <p class="calibre12">In conclusion, with slight modifications, you can have an army of scripts to run in cron or manually; these scripts will become your toolbox to freedom.</p>
+
+  <p class="calibre12">—Adam McPartlan is Father of Twins - Linux lover, Open Source Enthusiast - LFCS, AWS Cloud Practitioner. Follow him on Twitter: @mcparty.</p>
+
+  <h3 class="sigil_not_in_toc1">Send <em class="calibre7">LJ</em> Your Tech Tips</h3>
+
+  <p class="calibre12">If you have a short tech tip you'd like to submit to <em class="calibre6">Linux Journal</em>, send an email to ljeditor@linuxjournal.com with Tech Tip in the subject line.</p>
+</body>
+</html>
